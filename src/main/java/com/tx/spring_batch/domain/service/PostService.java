@@ -39,7 +39,7 @@ public class PostService {
     }
 
     @Transactional
-    @Scheduled(cron = "0 0 1 * * ?") // 매 새벽 1시 마다 일괄 제거
+    @Scheduled(cron = "0 24 15 * * ?") // 매 새벽 1시 마다 일괄 제거
     public void performHardDelete() {
         List<Post> softDeletedPosts = postRepository
                 .findByStatusAndDeletedAtBefore(Status.DEAD, LocalDateTime.now().minusDays(7)); // DeletedAt을 기준으로 7일이 지난 게시글 삭제

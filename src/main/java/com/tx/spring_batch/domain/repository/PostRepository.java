@@ -11,4 +11,6 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByStatusAndDeletedAtBefore(Status status, LocalDateTime localDateTime);
+
+    List<Post> findByStatusAndDeletedAtAfter(Status status, LocalDateTime localDateTime);
 }
